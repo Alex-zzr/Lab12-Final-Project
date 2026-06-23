@@ -12,10 +12,10 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ec2-user
+          username: ubuntu  # 你的实例是Ubuntu，不能写ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ec2-user/仓库名
+            cd /home/ubuntu/Lab12-Final-Project
             git pull
             docker compose down
             docker compose up -d --build
