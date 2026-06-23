@@ -1,0 +1,21 @@
+name: Auto Deploy to AWS EC2
+on:
+  push:
+    branches: [ main ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull repository code
+        uses: actions/checkout@v4
+      - name: Connect EC2 & update project
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /home/ec2-user/仓库名
+            git pull
+            docker-compose down
+            docker-compose up -d --build

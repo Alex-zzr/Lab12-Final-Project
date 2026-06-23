@@ -1,0 +1,14 @@
+version: "3"
+services:
+  # 自制个人网站
+  my-profile-web:
+    build: .
+    ports:
+      - "8080:80"
+    restart: always
+  # 开源Todo待办应用
+  todo-app:
+    image: ryanubeda/todo-mvc
+    ports:
+      - "8081:80"
+    restart: always
