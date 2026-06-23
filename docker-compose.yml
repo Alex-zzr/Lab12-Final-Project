@@ -1,11 +1,13 @@
 services:
-  我的个人资料网页:
+  my-profile-web:
     build: .
     ports:
-      - "8688:80"
+      - "8080:80"
     restart: always
-  待办事项应用:
-    image: Ryanubeda/Todo-MVC
+  todo-app:
+    image: nginx:alpine
+    volumes:
+      - ./todo-static:/usr/share/nginx/html
     ports:
-      - "8881:80"
+      - "8081:80"
     restart: always

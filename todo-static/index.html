@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Open Source Todo App</title>
+</head>
+<body>
+    <h1>Todo待办应用（开源演示）</h1>
+    <div>
+        <input id="taskInput" placeholder="输入待办事项">
+        <button onclick="addTask()">新增</button>
+    </div>
+    <ul id="taskList"></ul>
+    <script>
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const val = input.value.trim();
+            if(!val) return;
+            const li = document.createElement('li');
+            li.innerText = val;
+            document.getElementById('taskList').appendChild(li);
+            input.value = '';
+        }
+    </script>
+</body>
+</html>
